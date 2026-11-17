@@ -471,6 +471,18 @@ class InterfazSoftwareFJ:
 
 
 if __name__ == "__main__":
-    ventana = tk.Tk()
-    app = InterfazSoftwareFJ(ventana)
-    ventana.mainloop()
+    try:
+        ventana = tk.Tk()
+        app = InterfazSoftwareFJ(ventana)
+        ventana.mainloop()
+    except tk.TclError as error_gui:
+        print("\n[AVISO] Entorno sin pantalla gráfica detectado (Codespaces). Ejecutando en modo consola...\n")
+        for linea in ejecutar_simulacion_12_operaciones():
+            print(linea)
+        registrar_evento(
+            "INFO",
+            "Ejecución completada en modo consola por ausencia de entorno gráfico ($DISPLAY).",
+            error_gui,
+        )
+        print("\n--- REGISTRO GENERADO EN sistema_eventos.log ---")
+        print(leer_historial_logs())

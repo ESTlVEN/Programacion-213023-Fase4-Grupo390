@@ -29,3 +29,16 @@ class ServicioNoDisponibleError(SoftwareFJException):
     pass
 
 
+class ReservaInvalidaError(SoftwareFJException):
+    """Se lanza cuando una reserva carece de entidades válidas o duración permitida."""
+    pass
+
+
+class OperacionNoPermitidaError(SoftwareFJException):
+    """Se lanza cuando se intenta una transición de estado ilegal o un duplicado."""
+    pass
+
+
+class CalculoInconsistenteError(SoftwareFJException):
+    """Se lanza cuando se detectan anomalías matemáticas en tarifas, impuestos o descuentos."""
+    pass
